@@ -1,13 +1,15 @@
 #!/bin/sh
 echo "  Kube Admin Reset"
-kubeadm reset -f
+sudo kubeadm reset -f
 
 echo "  Remove all packages related to Kubernetes"
-apt remove -y kubeadm kubectl kubelet kubernetes-cni 
-apt purge -y kube*
+sudo apt remove -y kubeadm kubectl kubelet kubernetes-cni 
+sudo apt purge -y kube*
 
 echo "  Remove docker images ( optional if using docker)"
-docker image prune -a -y
+# Note: Docker does not support "-y" for automatic yes to prompt in "docker image prune"
+#you can use "yes | command" to auto confirm, be cautious with approach.
+sudo docker image prune -a -y
 
 echo "  Remove parts"
 
