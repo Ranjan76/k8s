@@ -13,9 +13,20 @@ sudo docker image prune -a
 
 echo "Removing docker and assoiated packages"
 sudo apt-get remove docker-engine docker.io containerd runc -y
-apt autoremove -y
+
+echo "Removing any residual packages and dpendencies..."
+sudo apt-get autoremove -y
+
+echo "cleaning up Docker's system files ..."
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
+
+echo "Cleaning up Kubernets configuration files..."
+sudo rm -rf /etc/kubernetes/
+sudo rm -rf $HOME/.KUBR/
 
 echo "  Remove all folder associated to kubernetes, etcd, "
-rm -rf ~/.kube
-rm -rf /etc/cni /etc/kubernetes /var/lib/dockershim /var/lib/etcd /var/lib/kubelet /var/lib/etcd2/ /var/run/kubernetes ~/.kube/* 
-rm -rf /etc/systemd/system/etcd* 
+sudo rm -rf /etc/cni /etc/kubernetes /var/lib/dockershim /var/lib/etcd /var/lib/kubelet /var/lib/etcd2/ /var/run/kubernetes
+
+echo "cleanup complete."
+ 
