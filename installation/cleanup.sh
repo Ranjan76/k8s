@@ -9,10 +9,10 @@ sudo apt purge -y kube*
 echo "  Remove docker images ( optional if using docker)"
 # Note: Docker does not support "-y" for automatic yes to prompt in "docker image prune"
 #you can use "yes | command" to auto confirm, be cautious with approach.
-sudo docker image prune -a -y
+sudo docker image prune -a
 
-echo "  Remove parts"
-
+echo "Removing docker and assoiated packages"
+sudo apt-get remove docker-engine docker.io containerd runc -y
 apt autoremove -y
 
 echo "  Remove all folder associated to kubernetes, etcd, "
