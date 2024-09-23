@@ -6,7 +6,7 @@ sudo echo deb http://apt.kubernetes.io/ kubernetes-xenial main > /etc/apt/source
 echo "Update the  package & Install the kubernetes and the tools required to manage..."
 sleep 2
 sudo apt-get update
-sudo apt install docker.io kubectl=1.20.5-00 kubeadm=1.20.5-00 kubelet=1.20.5-00 -y 
+sudo apt install docker.io kubectl=1.20.5-00 kubeadm=1.20.5-00 kubelet=1.20.5-00
 echo "Update the apt-get package..."
 sudo apt-get update
 
